@@ -352,7 +352,7 @@ export default function QuoteForm() {
           <FormField
             name="billUrl"
             control={form.control}
-            render={({ field }) => (
+            render={({}) => (
               <FormItem>
                 <FormLabel>
                   ¿Podrías subir una foto de tu factura de energía?
@@ -361,7 +361,7 @@ export default function QuoteForm() {
                   <UploadInput name="billUrl" control={form.control} />
                 </FormControl>
                 <FormDescription>
-                  This is a description for the additional comments.
+                  This is a description for the bill image url.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
