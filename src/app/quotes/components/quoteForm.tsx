@@ -16,14 +16,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { v2 as cloudinary } from "cloudinary";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { createQuote } from "@/actions/actions";
 import SubmitButton from "./submitBtn";
-import UploadInput from "./uploadInput";
 
+cloudinary.config({
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 const colombiaDepartments = [
   "Amazonas",
   "Antioquia",
@@ -102,9 +107,7 @@ const formSchema = z.object({
   systemType: z.string().min(3, {
     message: "System type must be at least 3 characters.",
   }),
-  billUrl: z.string().url({
-    message: "Bill url must be a valid url.",
-  }),
+  billUrl: z.string(),
   additionalComments: z.string().optional(),
 });
 export default function QuoteForm() {
@@ -352,13 +355,17 @@ export default function QuoteForm() {
           <FormField
             name="billUrl"
             control={form.control}
-            render={({}) => (
+            render={({ field }) => (
               <FormItem>
                 <FormLabel>
                   ¿Podrías subir una foto de tu factura de energía?
                 </FormLabel>
                 <FormControl>
-                  <UploadInput name="billUrl" control={form.control} />
+                  <input
+                    type="file"
+                    {...field}
+                    className="flex-1 block w-full px-3 py-2 text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
                 </FormControl>
                 <FormDescription>
                   This is a description for the bill image url.

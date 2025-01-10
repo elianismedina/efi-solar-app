@@ -28,7 +28,7 @@ export default async function QuotesPage() {
       </ul>
 
       <h2 className="text-3xl font-semibold">
-        ¿¡Háblanos de ti! Queremos conocerte
+        ¡Háblanos de ti! Queremos conocerte
       </h2>
       <Card>
         <CardHeader>
