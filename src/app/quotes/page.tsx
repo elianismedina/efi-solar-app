@@ -30,7 +30,7 @@ export default async function QuotesPage() {
       <h2 className="text-3xl font-semibold">
         ¡Háblanos de ti! Queremos conocerte
       </h2>
-      <Card>
+      <Card className="w-full max-w-md p-4">
         <CardHeader>
           <CardTitle>Request a quote</CardTitle>
           <CardDescription>

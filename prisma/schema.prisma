@@ -16,7 +16,7 @@ model Quote {
   location           String
   email              String
   phoneNumber        String
-  averageBill        String
+  averageBill        Int
   requestType        String
   roofType           String
   systemType         String

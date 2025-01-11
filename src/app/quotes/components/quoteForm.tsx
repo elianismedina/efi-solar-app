@@ -233,9 +233,7 @@ export default function QuoteForm() {
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
-                  ¿Cuánto pagas de energía en promedio por mes?
-                </FormLabel>
+                <FormLabel>Factura Promedio</FormLabel>
                 <FormControl>
                   <input
                     type="number"
@@ -244,7 +242,7 @@ export default function QuoteForm() {
                   />
                 </FormControl>
                 <FormDescription>
-                  This is a description for the average bill.
+                  ¿Cuánto pagas en promedio en tu factura de energía?
                 </FormDescription>
                 <FormMessage />
               </FormItem>
