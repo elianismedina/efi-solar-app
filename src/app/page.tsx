@@ -1,12 +1,10 @@
-import Link from "next/link";
+import LogoutButton from "../ui/LogoutButton";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="flex flex-col items-center gap-y-5 pt-24 text-center">
-      <h1 className="text-3xl font-semibold">Welcome EfiSolar app</h1>
-      <Link href="/quotes" className="underline">
-        Request a quote
-      </Link>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <h2>Home Page logged in User </h2>
+      <LogoutButton label={"Logout"} />
     </main>
   );
 }

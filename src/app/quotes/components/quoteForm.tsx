@@ -83,9 +83,11 @@ const formSchema = z.object({
     message: "Location must be at least 3 characters.",
   }),
 
-  email: z.string().email({
-    message: "Email must be a valid email.",
-  }),
+  email: z
+    .string({
+      required_error: "Email is required.",
+    })
+    .email(),
   phoneNumber: z.string().min(10, {
     message: "Phone number must be at least 10 characters.",
   }),
@@ -94,7 +96,7 @@ const formSchema = z.object({
     .min(0, {
       message: "Average bill must be at least 0.",
     })
-    .max(100, {
+    .max(10000000, {
       message: "Average bill must be at most 100.",
     })
     .default(0),
@@ -110,6 +112,7 @@ const formSchema = z.object({
   billUrl: z.string(),
   additionalComments: z.string().optional(),
 });
+
 export default function QuoteForm() {
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -140,6 +143,7 @@ export default function QuoteForm() {
                 <FormControl>
                   <input
                     type="text"
+                    required
                     {...field}
                     className="flex-1 block w-full px-3 py-2 text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
@@ -195,6 +199,7 @@ export default function QuoteForm() {
                 <FormControl>
                   <input
                     type="email"
+                    required
                     {...field}
                     className="flex-1 block w-full px-3 py-2 text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
@@ -216,6 +221,7 @@ export default function QuoteForm() {
                 <FormControl>
                   <input
                     type="text"
+                    required
                     {...field}
                     className="flex-1 block w-full px-3 py-2 text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
@@ -237,6 +243,7 @@ export default function QuoteForm() {
                 <FormControl>
                   <input
                     type="number"
+                    required
                     {...field}
                     className="flex-1 block w-full px-3 py-2 text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
@@ -395,6 +402,7 @@ export default function QuoteForm() {
               </FormItem>
             )}
           />
+
           <SubmitButton type="submit">Enviar</SubmitButton>
         </form>
       </Form>
