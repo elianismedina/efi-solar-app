@@ -5,6 +5,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { signIn, signOut } from "../auth";
 
 import { env } from "process";
 
@@ -60,6 +61,7 @@ export async function createQuote(formData: FormData) {
       systemType: systemType,
       billUrl: billUrl,
       additionalComments: additionalComments,
+      user: {},
     },
   });
   revalidatePath("/quotes");
@@ -93,3 +95,10 @@ async function uploadBill(file: File) {
   });
   return result.url;
 }
+
+export const login = async () => {
+  await signIn("github", { redirectTo: "/quotes" });
+};
+export const logout = async () => {
+  await signOut({ redirectTo: "/" });
+};
