@@ -8,5 +8,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: {
     strategy: "jwt",
   },
+  callbacks: {
+    async jwt({ token }) {
+      if (!token.sub) return token;
+      return token;
+    },
+  },
   providers: [GitHub],
 });

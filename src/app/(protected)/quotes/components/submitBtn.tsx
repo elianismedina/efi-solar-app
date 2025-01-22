@@ -3,7 +3,7 @@
 import React from "react";
 import { useFormStatus } from "react-dom";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { Button, ButtonProps } from "../../../components/ui/button";
+import { Button, ButtonProps } from "../../../../components/ui/button";
 
 type SubmitButtonProps = ButtonProps & { children?: React.ReactNode };
 

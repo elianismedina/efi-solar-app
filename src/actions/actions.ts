@@ -61,7 +61,6 @@ export async function createQuote(formData: FormData) {
       systemType: systemType,
       billUrl: billUrl,
       additionalComments: additionalComments,
-      user: {},
     },
   });
   revalidatePath("/quotes");
